@@ -1,10 +1,7 @@
 
 ## Introduction
 
-_i am currently a student for Java + Android Bootcamp.
-we are working hard to get to know java language very quickly, we are reading 2 or 3 chapters per night, each chapter contain 40 to 50 pages.
-after learning java and graduating from the bootcamp i will look forward to learn other Programming languages too.
-i will try to hunt my first coding job after the bootcamp and along with my job and everyday learning, i will continue my education toward my master in this field._
+
 
 
 ## Projects
