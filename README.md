@@ -6,7 +6,7 @@
 Seeking full-time or part-time Software Development work on Enterprise Java Applications for a company that prioritizes clients support, strong team collaboration and my education in computer science.
 
 ## PROFESSIONAL CERTIFICATES 
-*	Java Developer Certificate- Central New Mexico Community College
+*	Java Certificate- CNM Ingenuity Deep Dive Coding
 *	Graphic Design (Adobe Photoshop)
 *	Microsoft Office Suite
 *	Interpreting Certificate (Farsi – English)
