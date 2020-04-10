@@ -9,7 +9,7 @@ Seeking full-time or part-time Software Development work on Enterprise Java Appl
 *	Java Developer Certificate- Central New Mexico Community College
 *	Graphic Design (Adobe Photoshop)
 *	Microsoft Office Suite
-8	Interpreting Certificate (Farsi – English)
+*	Interpreting Certificate (Farsi – English)
 
 ## Projects
 
