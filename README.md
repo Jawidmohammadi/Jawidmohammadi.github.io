@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 ## Introduction
 
 * Pursued AAS in Computer Science.
@@ -22,3 +23,5 @@ Seeking full-time or part-time Software Development work on Enterprise Java Appl
 * [Qoute of Day - Server](git@github.com:Jawidmohammadi/qod.git)
 * [Qoute of Day - Client](git@github.com:Jawidmohammadi/quote-client.git)
  
+=======
+>>>>>>> Added my Webpage
