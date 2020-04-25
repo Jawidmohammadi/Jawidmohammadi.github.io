@@ -149,18 +149,21 @@ background-color: #f4f4f4;
 
 #boxes{
 	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
 	
 }
 #boxes .box{
+	margin: 20px;
+	padding:10px;
 	float: left;
 	width: 10%;
-	padding: 10px;
 	text-align: center;
 	
 
 }
 #boxes .box img{
-	width: 90px;
+	width: 60px;
 
 }
 /** sIDEBARE **/
