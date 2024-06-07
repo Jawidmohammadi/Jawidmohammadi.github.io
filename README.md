@@ -18,10 +18,10 @@ Seeking full-time or part-time Software Development work on Enterprise Java Appl
 
 * [Nasa APoD](https://github.com/Jawidmohammadi/nasa-apod-v4.git)
 * [Mystery Pattern](https://github.com/Jawidmohammadi/mystery-pattern.git)
-* [Card Game](git@github.com:Jawidmohammadi/cards.git)
-* [App Locker](git@github.com:Jawidmohammadi/app-locker.git)
-* [Qoute of Day - Server](git@github.com:Jawidmohammadi/qod.git)
-* [Qoute of Day - Client](git@github.com:Jawidmohammadi/quote-client.git)
+* [Card Game](https://github.com/Jawidmohammadi/cards.git)
+* [App Locker](https://github.com/Jawidmohammadi/app-locker.git)
+* [Qoute of Day - Server](https://github.com/Jawidmohammadi/qod.git)
+* [Qoute of Day - Client](https://github.com/Jawidmohammadi/quote-client.git)
  
 =======
 >>>>>>> Added my Webpage
