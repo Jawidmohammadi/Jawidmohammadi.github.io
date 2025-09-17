@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,20 +7,15 @@
   <title>Contact — Jawid Mohammadi</title>
   <style>
     :root{
-      --bg: #ffffff;
-      --panel: #f8fafc;
-      --muted: #475569;
-      --text: #0f172a;
-      --brand: #3b82f6;
-      --brand-2: #06b6d4;
-      --card: #f1f5f9;
-      --radius: 16px;
-      --shadow: 0 4px 14px rgba(0,0,0,.08);
+      --bg: #ffffff; --panel: #f8fafc; --muted: #475569; --text: #0f172a;
+      --brand: #3b82f6; --brand-2: #06b6d4; --card: #f1f5f9;
+      --radius: 16px; --shadow: 0 4px 14px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
     body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:var(--text); line-height:1.6}
     a{color:inherit; text-decoration:none}
-    .container{max-width:900px; margin:0 auto; padding:0 20px}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+
     header{position:sticky; top:0; background:#fff; border-bottom:1px solid #e2e8f0; z-index:50}
     .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; gap:10px; align-items:center}
@@ -35,7 +30,6 @@
     .title{display:flex; align-items:center; gap:10px; margin-bottom:14px}
     .bar{height:10px; width:10px; border-radius:3px; background:linear-gradient(135deg,var(--brand),var(--brand-2))}
     .muted{color:var(--muted)}
-
     form{display:grid; gap:14px; margin-top:10px}
     label{font-size:14px; color:#334155}
     input, textarea{width:100%; padding:12px 12px; border-radius:10px; border:1px solid #cbd5e1; background:#fff; color:var(--text); font-size:14px}
@@ -48,6 +42,8 @@
     .notice{display:none; margin-top:8px; font-size:14px}
     .notice.ok{color:#16a34a}
     .notice.err{color:#dc2626}
+    .notice.info{color:#0369a1}
+    .hidden{display:none!important}
 
     footer{margin:40px 0 30px; color:var(--muted); text-align:center}
   </style>
@@ -75,9 +71,14 @@
   <main class="container">
     <div class="card">
       <div class="title"><span class="bar"></span><h2 style="margin:0">Contact</h2></div>
-      <p class="muted">Feel free to reach out about opportunities, project collaborations, or questions. I typically respond within 1–2 days.</p>
+      <p class="muted">Fill this out and it will email me directly. You’ll see a success message on this page if it goes through.</p>
 
-      <form id="contactForm" autocomplete="on" novalidate>
+      <!--
+        STEP 1: Replace the action URL with your own Formspree endpoint.
+        Create one here: https://formspree.io/
+      -->
+      <form id="contactForm" action="https://formspree.io/f/mldwyzjv" method="POST" novalidate>
+        <!-- Accessible labels & field names Formspree will include in the email -->
         <div class="row">
           <div>
             <label for="name">Full Name</label>
@@ -102,11 +103,21 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="How can I help?" required></textarea>
         </div>
+
+        <!-- Honeypot for spam bots -->
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+
+        <!-- Formspree will reply to this address -->
+        <input type="hidden" name="_replyto" value="" id="replytoField">
+        <!-- Optional: set a custom subject for the email you receive -->
+        <input type="hidden" name="_subject" value="Portfolio contact">
+
         <div class="actions">
-          <button class="btn primary" type="submit">Send</button>
-          <a class="btn" id="mailLink" href="#">Open in email client</a>
-          <span class="notice ok" id="okMsg">Your message looks good — use the buttons above to send it.</span>
+          <button class="btn primary" type="submit" id="sendBtn">Send</button>
+          <a class="btn" id="fallbackMail" href="#">Open in email client</a>
+          <span class="notice ok" id="okMsg">Thanks! Your message was sent.</span>
           <span class="notice err" id="errMsg">Please fill in your name, a valid email, and a message.</span>
+          <span class="notice info" id="waitMsg">Sending…</span>
         </div>
       </form>
 
@@ -114,7 +125,8 @@
 
       <div>
         <p class="muted" style="margin:0 0 8px">Prefer email?</p>
-        <p style="margin:0"><a href="mailto:jawidm14@gmail.com" class="pill">jawidm14@gmail.com</a></p>
+        <!-- Replace with your real address -->
+        <p style="margin:0"><a href="mailto:jawid@example.com" class="pill">jawid@example.com</a></p>
       </div>
     </div>
   </main>
@@ -131,10 +143,12 @@
     const form = document.getElementById('contactForm');
     const ok = document.getElementById('okMsg');
     const err = document.getElementById('errMsg');
-    const mail = document.getElementById('mailLink');
+    const waitMsg = document.getElementById('waitMsg');
+    const mail = document.getElementById('fallbackMail');
+    const replytoField = document.getElementById('replytoField');
 
     function buildMailto(name,email,subject,message){
-      const to = 'jawidm14@gmail.com'; 
+      const to = 'jawid@example.com'; // TODO: replace with your real email
       const s = encodeURIComponent(subject || 'Portfolio contact from ' + name);
       const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
       return `mailto:${to}?subject=${s}&body=${body}`;
@@ -146,24 +160,48 @@
       const message = document.getElementById('message').value.trim();
       const okEmail = /.+@.+\..+/.test(email);
       const good = name && okEmail && message.length > 2;
-      ok.style.display = good ? 'inline' : 'none';
+      ok.style.display = 'none';
       err.style.display = good ? 'none' : 'inline';
+      waitMsg.style.display = 'none';
       const subject = document.getElementById('subject').value.trim();
       mail.href = good ? buildMailto(name,email,subject,message) : '#';
       mail.setAttribute('aria-disabled', good ? 'false' : 'true');
+      // keep reply-to synced for Formspree
+      replytoField.value = okEmail ? email : '';
       return good;
     }
 
     form.addEventListener('input', validate);
-    form.addEventListener('submit', (e)=>{
+
+    form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       if (!validate()) return;
-      // Option 1: open mail client
-      mail.click();
-      // Option 2: integrate a backend or Formspree later
+
+      // POST to Formspree (AJAX)
+      const data = new FormData(form);
+      waitMsg.style.display = 'inline';
+      err.style.display = 'none';
+      ok.style.display = 'none';
+
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+        waitMsg.style.display = 'none';
+        if (res.ok) {
+          ok.style.display = 'inline';
+          form.reset();
+        } else {
+          // If Formspree returns an error, show fallback link
+          err.textContent = 'Could not send via server — you can click “Open in email client.”';
+          err.style.display = 'inline';
+        }
+      } catch {
+        waitMsg.style.display = 'none';
+        err.textContent = 'Network error — try again or use “Open in email client.”';
+        err.style.display = 'inline';
+      }
     });
 
-    // Initialize state
+    // Init state
     validate();
   </script>
 </body>
