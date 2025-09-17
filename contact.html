@@ -1,93 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" contect="width=device-width">
-	<meta name="description" content="Afordable and professional webdesign">
-	<meta name="keyword" content="web design Afordable webdesign">
-	<meta name="author" content="Jawid Mohammadi">
-	<title>Jawid Mohammadi's Portfolio | Services </title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact — Jawid Mohammadi" />
+  <title>Contact — Jawid Mohammadi</title>
+  <style>
+    :root{
+      --bg: #ffffff;
+      --panel: #f8fafc;
+      --muted: #475569;
+      --text: #0f172a;
+      --brand: #3b82f6;
+      --brand-2: #06b6d4;
+      --card: #f1f5f9;
+      --radius: 16px;
+      --shadow: 0 4px 14px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:var(--text); line-height:1.6}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:900px; margin:0 auto; padding:0 20px}
+    header{position:sticky; top:0; background:#fff; border-bottom:1px solid #e2e8f0; z-index:50}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; gap:10px; align-items:center}
+    .logo{width:36px; height:36px; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2))}
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{padding:8px 10px; border-radius:8px; color:var(--muted)}
+    nav a:hover{background:#e2e8f0; color:var(--text)}
+    .pill{background:#e2e8f0; color:var(--muted); padding:6px 12px; border-radius:999px; font-size:13px}
+
+    main{padding:40px 0}
+    .card{background:var(--panel); border:1px solid #e2e8f0; border-radius:var(--radius); box-shadow:var(--shadow); padding:26px}
+    .title{display:flex; align-items:center; gap:10px; margin-bottom:14px}
+    .bar{height:10px; width:10px; border-radius:3px; background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .muted{color:var(--muted)}
+
+    form{display:grid; gap:14px; margin-top:10px}
+    label{font-size:14px; color:#334155}
+    input, textarea{width:100%; padding:12px 12px; border-radius:10px; border:1px solid #cbd5e1; background:#fff; color:var(--text); font-size:14px}
+    textarea{min-height:140px; resize:vertical}
+    .row{display:grid; gap:14px}
+    @media(min-width:760px){.row{grid-template-columns:1fr 1fr}}
+    .btn{padding:10px 14px; border-radius:10px; border:1px solid #cbd5e1; background:#fff; color:var(--text); font-size:14px; cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; border:none}
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .notice{display:none; margin-top:8px; font-size:14px}
+    .notice.ok{color:#16a34a}
+    .notice.err{color:#dc2626}
+
+    footer{margin:40px 0 30px; color:var(--muted); text-align:center}
+  </style>
 </head>
 <body>
-	<header>
-		<div class="container">
-		<div id="branding">
-			<h1> <span class="highlight">JAWID MOHAMMADI'S </span>PORTFOLIO</h1>
-		</div>
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-		
-				<li  class="current"><a href="contact.html">Contact</a></li>
-			</ul>
-		</nav>
-	</div>
-	</header>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Jawid Mohammadi</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#featured-ml">Featured ML</a></li>
+          <li><a href="index.html#certs">Certificates</a></li>
+          <li><a class="pill" href="index.html">← Back to Portfolio</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<div id="form">
-	<h3>Contact me</h3>
-  	<form action="/action_page.php">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+  <main class="container">
+    <div class="card">
+      <div class="title"><span class="bar"></span><h2 style="margin:0">Contact</h2></div>
+      <p class="muted">Feel free to reach out about opportunities, project collaborations, or questions. I typically respond within 1–2 days.</p>
 
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email" placeholder="Your email..">
+      <form id="contactForm" autocomplete="on" novalidate>
+        <div class="row">
+          <div>
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="Reason for contact" />
+          </div>
+          <div>
+            <label for="company">Company (optional)</label>
+            <input id="company" name="company" type="text" placeholder="Your company or organization" />
+          </div>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can I help?" required></textarea>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="submit">Send</button>
+          <a class="btn" id="mailLink" href="#">Open in email client</a>
+          <span class="notice ok" id="okMsg">Your message looks good — use the buttons above to send it.</span>
+          <span class="notice err" id="errMsg">Please fill in your name, a valid email, and a message.</span>
+        </div>
+      </form>
 
-    <label for="Subject">Subject</label>
-    <input type="text" id="sebject" name="sebject" placeholder="Subject..">
-    
-    <label for="Message">Message</label>
-    <input type="text" id="message" name="message" placeholder="Your message..">
-    
-    <label for="catagory">Catagory</label>
-    <select id="country" na   me="catagory">
-      <option value="Availability">Availability & interest</option>
-      <option value="content">Content question & suggestions</option>
-      <option value="website">Website issues & suggeestions</option>
-      <option value="other">Other</option>
-    </select>
-  
-    <input type="submit" value="Submit">
-  </form>
-</div>
+      <hr style="margin:24px 0; border:0; height:1px; background:#e2e8f0">
 
-</section>
+      <div>
+        <p class="muted" style="margin:0 0 8px">Prefer email?</p>
+        <p style="margin:0"><a href="mailto:jawidm14@gmail.com" class="pill">jawidm14@gmail.com</a></p>
+      </div>
+    </div>
+  </main>
 
-<section id="main">
-	<div class="container">
-		<article id="main-col">
-			<h1 class="page-title"> Contact info</h1>
-			<h6>
-				<ul>
-					<li>
-						email address : m.jawed.mohammadi@gmail.com / mmohammadi@cnm.edu		
-					</li>
-					<li>
-						Linkden : <a href="https://www.linkedin.com/in/jawid-mohammadi/" target="blank">Jawid Mohammadi's Linkden Profile</a>
-					</li>
-				</ul>
+  <footer>
+    <div class="container">
+      <p>© <span id="y"></span> Jawid Mohammadi</p>
+    </div>
+  </footer>
 
-				
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-			</h6>
-			
-		</article>
-		<aside id="sidebar">
-			<div class="dark">
-			<h3>Random Facts About ME</h3>
-			<p> Maintains current working knowledge of
-				relevant technologies, equipment, and systems. Multilingual English, Persian, Hindi and Urdu. Effective as a team member with a high tendency to motivate others.
-			</p>
-			</div>
-		</aside>
-	</div>
-</section>
+    const form = document.getElementById('contactForm');
+    const ok = document.getElementById('okMsg');
+    const err = document.getElementById('errMsg');
+    const mail = document.getElementById('mailLink');
 
-<footer>
-	<h1>
-		JAWID MOHAMMADI'S PORTFOLIO 
-	</h1>
-</footer>
+    function buildMailto(name,email,subject,message){
+      const to = 'jawidm14@gmail.com'; 
+      const s = encodeURIComponent(subject || 'Portfolio contact from ' + name);
+      const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
+      return `mailto:${to}?subject=${s}&body=${body}`;
+    }
+
+    function validate(){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const okEmail = /.+@.+\..+/.test(email);
+      const good = name && okEmail && message.length > 2;
+      ok.style.display = good ? 'inline' : 'none';
+      err.style.display = good ? 'none' : 'inline';
+      const subject = document.getElementById('subject').value.trim();
+      mail.href = good ? buildMailto(name,email,subject,message) : '#';
+      mail.setAttribute('aria-disabled', good ? 'false' : 'true');
+      return good;
+    }
+
+    form.addEventListener('input', validate);
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if (!validate()) return;
+      // Option 1: open mail client
+      mail.click();
+      // Option 2: integrate a backend or Formspree later
+    });
+
+    // Initialize state
+    validate();
+  </script>
 </body>
 </html>
