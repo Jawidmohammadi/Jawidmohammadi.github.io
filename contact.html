@@ -148,7 +148,7 @@
     const replytoField = document.getElementById('replytoField');
 
     function buildMailto(name,email,subject,message){
-      const to = 'jawid@example.com'; // TODO: replace with your real email
+      const to = 'jawidm14@gmail.com'; // TODO: replace with your real email
       const s = encodeURIComponent(subject || 'Portfolio contact from ' + name);
       const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
       return `mailto:${to}?subject=${s}&body=${body}`;
